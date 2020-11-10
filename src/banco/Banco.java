@@ -6,8 +6,7 @@
 package banco;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
@@ -15,25 +14,17 @@ import javax.swing.*;
  * @author Ivan
  */
 public class Banco { // hacer un banco -> 
-
-    // FRONTEND esto se hace con código (de Java)
-    // BACKEND esto de hace con código (de Java)
     
     /**
      * @param args the command line arguments
      */
     public static void funcionPrincipal(){
-        JFrame ventanaPrincipal = new JFrame();
-        ventanaPrincipal.setVisible(true);
-        ventanaPrincipal.setSize(500, 500);
-        ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventanaPrincipal.setLocation(300, 100);
-        ventanaPrincipal.setTitle("Ventana Principal");
+        VentanaPrincipal ventana = new VentanaPrincipal("Ventana Principal");
+
         GridLayout grilla1 = new GridLayout(0, 1);
         JPanel panel = new JPanel();
         panel.setLayout(grilla1);
-        ventanaPrincipal.add(panel);
-        panel.setSize(200, 200);
+        ventana.add(panel);
         JLabel titulo = new JLabel("Mi Aplicación de Banco", JLabel.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 30));
         panel.add(titulo);
@@ -46,7 +37,7 @@ public class Banco { // hacer un banco ->
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //System.out.println("HOLA");
-                ventanaPrincipal.setVisible(false);
+                ventana.setVisible(false);
                 gestionUsuarios();
             }
         };
@@ -54,16 +45,12 @@ public class Banco { // hacer un banco ->
     }
     
     public static void gestionUsuarios(){
-        JFrame ventanaUsuarios = new JFrame();
-        ventanaUsuarios.setVisible(true);
-        ventanaUsuarios.setSize(500, 500);
-        ventanaUsuarios.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventanaUsuarios.setLocation(300, 100);
-        ventanaUsuarios.setTitle("Gestion Usuarios");  
+        VentanaPrincipal ventana = new VentanaPrincipal("Gestion Usuarios");
+        
         GridLayout grilla1 = new GridLayout(0, 1);
         JPanel panel = new JPanel();
         panel.setLayout(grilla1);
-        ventanaUsuarios.add(panel);
+        ventana.add(panel);
         panel.setSize(200, 200);
         JLabel titulo = new JLabel("Gestion usuarios", JLabel.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 30));
@@ -81,7 +68,7 @@ public class Banco { // hacer un banco ->
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //System.out.println("HOLA");
-                ventanaUsuarios.dispose();
+                ventana.dispose();
                 crearUsuarios();
             }
         };
@@ -89,16 +76,12 @@ public class Banco { // hacer un banco ->
     }
     
     public static void gestionCuentas(){
-        JFrame ventanaUsuarios = new JFrame();
-        ventanaUsuarios.setVisible(true);
-        ventanaUsuarios.setSize(500, 500);
-        ventanaUsuarios.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventanaUsuarios.setLocation(300, 100);
-        ventanaUsuarios.setTitle("Gestion Cuentas");  
+        VentanaPrincipal ventana = new VentanaPrincipal("Gestion Cuentas");
+        
         GridLayout grilla1 = new GridLayout(0, 1);
         JPanel panel = new JPanel();
         panel.setLayout(grilla1);
-        ventanaUsuarios.add(panel);
+        ventana.add(panel);
         panel.setSize(200, 200);
         JLabel titulo = new JLabel("Gestion cuentas", JLabel.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 30));
@@ -114,88 +97,36 @@ public class Banco { // hacer un banco ->
     }
     
     public static void crearUsuarios(){
-        JFrame ventanaUsuarios = new JFrame();
-        ventanaUsuarios.setVisible(true);
-        ventanaUsuarios.setSize(500, 500);
-        ventanaUsuarios.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventanaUsuarios.setLocation(300, 100);
-        ventanaUsuarios.setTitle("Crear usuario");  
-        GridLayout grilla1 = new GridLayout(0, 2);
-        JPanel panelTitulo = new JPanel();
-        JPanel panel = new JPanel();
+        VentanaPrincipal ventana = new VentanaPrincipal("Crear usuario");
+
+        PanelTitulo panelTitulo = new PanelTitulo("Crear usuario");
+        PanelUsuario panelUsuario = new PanelUsuario();
         JPanel panelSubmit = new JPanel();
-        JPanel panelAuxiliar = new JPanel(new GridLayout(0, 1));
+        JPanel panelAuxiliar = new JPanel(new FlowLayout());
         panelAuxiliar.add(panelTitulo);
-        panelAuxiliar.add(panel);
+        panelAuxiliar.add(panelUsuario);
         panelAuxiliar.add(panelSubmit);
-        ventanaUsuarios.add(panelAuxiliar);
-        panel.setLayout(grilla1);
-        panel.setSize(200, 200);
-        JLabel titulo = new JLabel("Crear usuario", JLabel.CENTER);
-        titulo.setFont(new Font("Arial", Font.BOLD, 30));
-        panelTitulo.add(titulo);
-        JLabel labelDocumento = new JLabel("Documento", JLabel.CENTER);
-        panel.add(labelDocumento);
-        JTextField infoDocumento = new JTextField();
-        panel.add(infoDocumento);
-        JLabel labelNombre = new JLabel("Nombre(s)", JLabel.CENTER);
-        panel.add(labelNombre);
-        JTextField infoNombre = new JTextField();
-        panel.add(infoNombre);
-        JLabel labelApellido = new JLabel("Apellido(s)", JLabel.CENTER);
-        panel.add(labelApellido);
-        JTextField infoApellido = new JTextField();
-        panel.add(infoApellido);
-        JLabel labelGenero = new JLabel("Genero", JLabel.CENTER);
-        panel.add(labelGenero);
-        JPanel panelGenero = new JPanel();
-        JRadioButton infoMasculino = new JRadioButton("Masculino");
-        infoMasculino.setSelected(true);
-        JRadioButton infoFemenino = new JRadioButton("Femenino");
-        JRadioButton infoOtro = new JRadioButton("Otro");
-        ButtonGroup infoGenero = new ButtonGroup();
-        infoGenero.add(infoMasculino);
-        infoGenero.add(infoFemenino);
-        infoGenero.add(infoOtro);
-        panelGenero.add(infoMasculino);
-        panelGenero.add(infoFemenino);
-        panelGenero.add(infoOtro);
-        panel.add(panelGenero);
-        JLabel labelDireccion = new JLabel("Direccion", JLabel.CENTER);
-        panel.add(labelDireccion);
-        JTextField infoDireccion = new JTextField();
-        panel.add(infoDireccion);
-        JLabel labelTelefono = new JLabel("Telefono", JLabel.CENTER);
-        panel.add(labelTelefono);
-        JTextField infoTelefono = new JTextField();
-        panel.add(infoTelefono);
-        JLabel labelCorreo = new JLabel("Correo", JLabel.CENTER);
-        panel.add(labelCorreo);
-        JTextField infoCorreo = new JTextField();
-        panel.add(infoCorreo);
-        JLabel labelOcupacion = new JLabel("Ocupacion", JLabel.CENTER);
-        panel.add(labelOcupacion);
-        JTextField infoOcupacion = new JTextField();
-        panel.add(infoOcupacion);
+        ventana.add(panelAuxiliar);
         JButton submitUsuario = new JButton();
+        submitUsuario.setBackground(Color.yellow);
         submitUsuario.setText("Enviar");
         panelSubmit.add(submitUsuario);
         
         ActionListener clickBoton = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String documento = infoDocumento.getText();
-                String nombre = infoNombre.getText();
-                String apellido = infoApellido.getText();
-                String direccion = infoDireccion.getText();
-                String telefono = infoTelefono.getText();
-                String correo = infoCorreo.getText();
-                String ocupacion = infoOcupacion.getText();
+                String documento = panelUsuario.infoDocumento.getText();
+                String nombre = panelUsuario.infoNombre.getText();
+                String apellido = panelUsuario.infoApellido.getText();
+                String direccion = panelUsuario.infoDireccion.getText();
+                String telefono = panelUsuario.infoTelefono.getText();
+                String correo = panelUsuario.infoCorreo.getText();
+                String ocupacion = panelUsuario.infoOcupacion.getText();
                 String genero;
-                if(infoMasculino.isSelected()){
+                if(panelUsuario.infoMasculino.isSelected()){
                     genero = "Masculino";
                 }
-                else if(infoFemenino.isSelected()){
+                else if(panelUsuario.infoFemenino.isSelected()){
                     genero = "Femenino";
                 }
                 else{
@@ -209,17 +140,70 @@ public class Banco { // hacer un banco ->
                 System.out.println("telefono: " + telefono);
                 System.out.println("correo: " + correo);
                 System.out.println("ocupacion: " + ocupacion);
+                JOptionPane.showMessageDialog(null, "El usuario fue agregado con exito");
             }
         };
         submitUsuario.addActionListener(clickBoton);
     }
     
+    public static void modificarUsuarios(){
+        VentanaPrincipal ventana = new VentanaPrincipal("Modificar usuario");
+
+        PanelTitulo panelTitulo = new PanelTitulo("Modificar usuario");
+        PanelUsuario panelUsuario = new PanelUsuario();
+        JPanel panelSubmit = new JPanel();
+        JPanel panelAuxiliar = new JPanel(new FlowLayout());
+        panelAuxiliar.add(panelTitulo);
+        panelAuxiliar.add(panelUsuario);
+        panelAuxiliar.add(panelSubmit);
+        ventana.add(panelAuxiliar);
+        JButton submitUsuario = new JButton();
+        submitUsuario.setText("Enviar");
+        panelSubmit.add(submitUsuario);
+    }
+    
+    public static void consultarUsuarios(){
+        VentanaPrincipal ventana = new VentanaPrincipal("Consultrar usuario");
+
+        PanelTitulo panelTitulo = new PanelTitulo("Consultar usuario");
+        PanelUsuario panelUsuario = new PanelUsuario();
+        JPanel panelSubmit = new JPanel();
+        JPanel panelAuxiliar = new JPanel(new FlowLayout());
+        
+        panelUsuario.infoNombre.setEditable(false);
+        panelUsuario.infoApellido.setEditable(false);
+        panelUsuario.infoOcupacion.setEditable(false);
+        panelUsuario.infoTelefono.setEditable(false);
+        panelUsuario.infoCorreo.setEditable(false);
+        panelUsuario.infoDireccion.setEditable(false);
+        
+        panelAuxiliar.add(panelTitulo);
+        panelAuxiliar.add(panelUsuario);
+        panelAuxiliar.add(panelSubmit);
+        ventana.add(panelAuxiliar);
+        JButton submitUsuario = new JButton();
+        submitUsuario.setText("Enviar");
+        panelSubmit.add(submitUsuario);
+    }
+    
+    public static void borrarUsuarios(){
+        VentanaPrincipal ventana = new VentanaPrincipal("Borrar usuario");
+
+        PanelTitulo panelTitulo = new PanelTitulo("Borrar usuario");
+        PanelUsuario panelUsuario = new PanelUsuario();
+        JPanel panelSubmit = new JPanel();
+        JPanel panelAuxiliar = new JPanel(new FlowLayout());
+        panelAuxiliar.add(panelTitulo);
+        panelAuxiliar.add(panelUsuario);
+        panelAuxiliar.add(panelSubmit);
+        ventana.add(panelAuxiliar);
+        JButton submitUsuario = new JButton();
+        submitUsuario.setText("Enviar");
+        panelSubmit.add(submitUsuario);
+    }
+    
     public static void main(String[] args) {
         funcionPrincipal();
-        //gestionUsuarios();
-        //gestionCuentas();
-        //crearUsuarios();
-        
     }
 }
 
@@ -229,5 +213,26 @@ class BotonPrincipal extends JButton{
         this.setPreferredSize(new Dimension(100, 100));
         this.setText(texto);
         this.setFont(new Font("Arial", Font.ITALIC, 20));
+    }
+}
+
+class VentanaPrincipal extends JFrame{
+    VentanaPrincipal(String texto){
+        super();
+        this.setVisible(true);
+        this.setSize(500, 500);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocation(300, 100);
+        this.setTitle(texto);
+    }
+}
+
+class PanelTitulo extends JPanel{
+    PanelTitulo(String texto){
+        super();
+        JLabel titulo = new JLabel(texto, JLabel.CENTER);
+        titulo.setFont(new Font("Arial", Font.BOLD, 30));
+        this.add(titulo);
     }
 }
