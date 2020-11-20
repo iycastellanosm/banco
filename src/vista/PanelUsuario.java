@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package vista;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -29,23 +29,31 @@ public class PanelUsuario extends JPanel{
     JTextField infoCorreo;
     JTextField infoTelefono;
     JTextField infoDireccion;
-    
+    JLabel labelDocumento;
+    JLabel labelNombre;
+    JLabel labelApellido;
+    JLabel labelGenero;
+    JLabel labelDireccion;
+    JLabel labelTelefono;
+    JLabel labelCorreo;
+    JLabel labelOcupacion;
+            
     PanelUsuario(){
         GridLayout grilla1 = new GridLayout(0, 2);
         this.setLayout(grilla1);
-        JLabel labelDocumento = new JLabel("Documento", JLabel.LEFT);
+        labelDocumento = new JLabel("Documento", JLabel.LEFT);
         this.add(labelDocumento);
         infoDocumento = new JTextField();
         this.add(infoDocumento);
-        JLabel labelNombre = new JLabel("Nombre(s)", JLabel.LEFT);
+        labelNombre = new JLabel("Nombre(s)", JLabel.LEFT);
         this.add(labelNombre);
         infoNombre = new JTextField();
         this.add(infoNombre);
-        JLabel labelApellido = new JLabel("Apellido(s)", JLabel.LEFT);
+        labelApellido = new JLabel("Apellido(s)", JLabel.LEFT);
         this.add(labelApellido);
         infoApellido = new JTextField();
         this.add(infoApellido);
-        JLabel labelGenero = new JLabel("Genero", JLabel.LEFT);
+        labelGenero = new JLabel("Genero", JLabel.LEFT);
         this.add(labelGenero);
         JPanel panelGenero = new JPanel();
         infoMasculino = new JRadioButton("Masculino");
@@ -60,22 +68,41 @@ public class PanelUsuario extends JPanel{
         panelGenero.add(infoFemenino);
         panelGenero.add(infoOtro);
         this.add(panelGenero);
-        JLabel labelDireccion = new JLabel("Direccion", JLabel.LEFT);
+        labelDireccion = new JLabel("Direccion", JLabel.LEFT);
         this.add(labelDireccion);
         infoDireccion = new JTextField();
         this.add(infoDireccion);
-        JLabel labelTelefono = new JLabel("Telefono", JLabel.LEFT);
+        labelTelefono = new JLabel("Telefono", JLabel.LEFT);
         this.add(labelTelefono);
-        infoTelefono = new JTextField();
+        infoTelefono = new JTextField(12);
         this.add(infoTelefono);
-        JLabel labelCorreo = new JLabel("Correo", JLabel.LEFT);
+        labelCorreo = new JLabel("Correo", JLabel.LEFT);
         this.add(labelCorreo);
         infoCorreo = new JTextField();
         this.add(infoCorreo);
-        JLabel labelOcupacion = new JLabel("Ocupacion", JLabel.LEFT);
+        labelOcupacion = new JLabel("Ocupacion", JLabel.LEFT);
         this.add(labelOcupacion);
         infoOcupacion = new JTextField();
         this.add(infoOcupacion);
+    }
+    
+    public void setInvisible(){
+        infoNombre.setVisible(false);
+        infoApellido.setVisible(false);
+        infoOcupacion.setVisible(false);
+        infoTelefono.setVisible(false);
+        infoCorreo.setVisible(false);
+        infoDireccion.setVisible(false);
+        infoMasculino.setVisible(false);
+        infoFemenino.setVisible(false);
+        infoOtro.setVisible(false);
+        labelNombre.setVisible(false);
+        labelApellido.setVisible(false);
+        labelGenero.setVisible(false);
+        labelDireccion.setVisible(false);
+        labelTelefono.setVisible(false);
+        labelCorreo.setVisible(false);
+        labelOcupacion.setVisible(false);
     }
     
 }
